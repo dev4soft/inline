@@ -12,6 +12,11 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+
+-- Дамп структуры базы данных blog
+CREATE DATABASE IF NOT EXISTS `blog` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `blog`;
+
 -- Дамп структуры для таблица blog.comments
 CREATE TABLE IF NOT EXISTS `comments` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -20,7 +25,8 @@ CREATE TABLE IF NOT EXISTS `comments` (
   `email` varchar(255) NOT NULL,
   `body` text NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `postId` (`postId`)
+  KEY `postId` (`postId`),
+  CONSTRAINT `FK_comments_posts` FOREIGN KEY (`postId`) REFERENCES `posts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Экспортируемые данные не выделены.
