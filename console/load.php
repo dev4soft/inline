@@ -38,7 +38,7 @@ $posts_count = load_data(
         'body',
     ]
 );
-    
+
 $data = file_get_contents('https://jsonplaceholder.typicode.com/comments');
 $comments = json_decode($data, true);
 $stmt = $db->prepare('insert into comments (id, postId, name, email, body) values (:id, :postId, :name, :email, :body)');
